@@ -47,10 +47,9 @@
 #
 #
 # def write_file(number):
-#     with open('file.txt', 'w') as data:
+#     with open('file.txt', 'a') as data:
 #         for i in range(number):
 #             data.write = (f"{random.randrange(0, 2 * number)}\n")
-#
 #
 #
 # def read_file():
@@ -64,6 +63,7 @@
 # write_file(n)
 # lst_index = read_file()
 # result = 1
+# i: int
 # for i in range(len(lst_index)):
 #     result *= lst_number[lst_index[i]]
 # print(f"Результат равен = {result}")

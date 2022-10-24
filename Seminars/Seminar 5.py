@@ -45,7 +45,7 @@
 # player1 = input("Введите имя первого игрока: ")
 # player2 = input("Введите имя второго игрока: ")
 # value = int(input("Введите количество конфет на столе: "))
-# flag = randint(0,2) # флаг очередности
+# flag = randint(0,2) # очередность хода
 # if flag:
 #     print(f"Первый ходит {player1}")
 # else:
@@ -98,7 +98,7 @@
 # player1 = input("Введите имя первого игрока: ")
 # player2 = "Bot"
 # value = int(input("Введите количество конфет на столе: "))
-# flag = randint(0,2) # флаг очередности
+# flag = randint(0,2) # очередность хода
 # if flag:
 #     print(f"Первый ходит {player1}")
 # else:
@@ -125,3 +125,70 @@
 #     print(f"Выиграл {player1}")
 # else:
 #     print(f"Выиграл {player2}")
+
+##########################################################################
+
+# Задача #3.	Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
+# Входные и выходные данные хранятся в отдельных текстовых файлах.
+
+#################
+# Проба с объяснением, просто  для себя разобраться...
+
+# Кодирование длин серий (RLE) в Python – это очень простая форма сжатия данных,
+# в которой поток данных предоставляется в качестве входных данных (например, «AAABBCCCC»),
+# а выходными данными является последовательность отсчетов последовательных значений данных в строке
+# (например, « 3A2B4C «).
+# Источник: https://tonais.ru/osnovy/kodirovanie-dlin-seriy-rle-python
+
+
+# def rle_encode(data): encoding = '' prev_char = '' count = 1
+# if not data: return '' for char in data:
+# #	If the prev and current characters
+# #	don't match...
+# if char != prev_char:
+# #	... then add the count and character
+# #	to our encoding if prev_char:
+# encoding += str(count) + prev_char count = 1 prev_char = char
+# else:
+# #	Or increment our counter
+# #	if the characters do match
+# 	count += 1
+# else:
+# 	# Finish off the encoding
+# 	encoding += str(count) + prev_char ret encoding
+######################
+
+def coding(txt):  # функция кодирования
+    count = 1
+    res = ''
+    for i in range(len(txt) - 1):
+        if txt[i] == txt[i + 1]:
+            count += 1
+        else:
+            res = res + str(count) + txt[i]
+            count = 1
+    if count > 1 or (txt[len(txt) - 2] != txt[-1]):
+        res = res + str(count) + txt[-1]
+    return res
+
+
+def decoding(txt):  # функция декодирования
+    number = ''
+    res = ''
+    for i in range(len(txt)):
+        if not txt[i].isalpha():
+            number += txt[i]
+        else:
+            res = res + txt[i] * int(number)
+            number = ''
+    return res
+
+
+# s = input("Введите текст для кодировки (без пробелов и разделителей): ")  # с вводом вручную
+s= open('file.txt').read()                                                  #  чтение из file.txt
+print(f"Текст до кодировки: {s}")
+print(f"Текст после кодировки: {coding(s)}")
+with open('file111.txt', 'w+') as rd:                                       # записали в file111.txt
+    rd.write(coding(s))
+
+

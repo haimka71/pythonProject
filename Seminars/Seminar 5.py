@@ -228,17 +228,12 @@ with open('file 222.txt', 'w+') as rd:                             # запис�
 
 
 
+
 # print(f"Текст после дешифровки: {decoding(coding(s))}")
 # with open('file111.txt','r') as rd:
 #  s1=list(map(int,rd.read().split(' ')))
 # print(f"Текст после дешифровки: {decoding(coding(s1))}")
 # print(f"Текст после кодировки: {coding(s)}")
-
-
-
-
-
-
 
 
 
@@ -253,7 +248,7 @@ with open('file 222.txt', 'w+') as rd:                             # запис�
 #  # sum = open('file111.txt').read()
 # print(f"Текст после дешифровки: {decoding(sum)}")
 
-############# Вариант с char, надо разбираться
+############# Вариант с char, надо разбираться # Проба с объяснением, просто  для себя разобраться...
 # def rle_encode(data): encoding = '' prev_char = '' count = 1
 # if not data: return '' for char in data:
 # #	If the prev and current characters
